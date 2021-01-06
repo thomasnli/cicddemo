@@ -10,10 +10,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
 
-- script: |
    - task: AzureResourceManagerTemplateDeployment@3
      inputs:
        deploymentScope: 'Resource Group'
@@ -27,4 +24,3 @@ steps:
        overrideParameters: '-projectName cicddemo -linkedTemplateUri https://raw.githubusercontent.com/thomasnli/cicddemo/main/CreateWebApp/linkedStorageAccount.json'
        deploymentMode: 'Incremental'
        deploymentName: 'cicddemo'
-  displayName: 'Run a multi-line script'
