@@ -1,0 +1,30 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+   - task: AzureResourceManagerTemplateDeployment@3
+     inputs:
+       deploymentScope: 'Resource Group'
+       azureResourceManagerConnection: 'Azurepipeline-demo-connection'
+       subscriptionId: '128ce48b-9521-42ad-bd41-10a7a96ca4d2'
+       action: 'Create Or Update Resource Group'
+       resourceGroupName: 'cicddemo-rg'
+       location: 'North Central US'
+       templateLocation: 'Linked artifact'
+       csmFile: 'CreateWebApp/azuredeploy.json'
+       overrideParameters: '-projectName cicddemo -linkedTemplateUri https://raw.githubusercontent.com/thomasnli/cicddemo/main/CreateWebApp/linkedStorageAccount.json'
+       deploymentMode: 'Incremental'
+       deploymentName: 'cicddemo'
+  displayName: 'Run a multi-line script'
