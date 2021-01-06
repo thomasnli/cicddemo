@@ -18,7 +18,7 @@ steps:
        subscriptionId: '128ce48b-9521-42ad-bd41-10a7a96ca4d2'
        action: 'Create Or Update Resource Group'
        resourceGroupName: 'cicddemo-rg1'
-       location: 'Central US'
+       location: 'Australia Central'
        templateLocation: 'Linked artifact'
        csmFile: 'CreateWebApp/azuredeploy.json'
        overrideParameters: '-projectName cicddemo1 -linkedTemplateUri https://raw.githubusercontent.com/thomasnli/cicddemo/main/CreateWebApp/linkedStorageAccount.json'
